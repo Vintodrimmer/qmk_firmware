@@ -42,9 +42,9 @@ enum planck_keycodes {
 };
 
 enum custom_keycodes {
-    ALPHA = SAFE_RANGE,
-    BETA,
-    DELTA
+  ALPHA = SAFE_RANGE,
+  BETA,
+  DELTA
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -184,7 +184,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
+/*
+ if (record->event.pressed) {
         switch(keycode) {
             case ALPHA:
                 SEND_STRING(SS_LCTRL("v")"u03b1");
@@ -197,12 +198,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
         }
     }
+*/
   switch (keycode) {
+/*    case ALPHA:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("v")"u03b1");
+      }
+      return false;
+      break;
+*/
     case QWERTY:
       if (record->event.pressed) {
         print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
-      }
+    }
       return false;
       break;
     case COLEMAK:
