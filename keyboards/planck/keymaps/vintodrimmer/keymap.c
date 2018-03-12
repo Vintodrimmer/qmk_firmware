@@ -38,11 +38,8 @@ enum planck_keycodes {
   LOWER,
   RAISE,
   BACKLIT,
-  EXT_PLV
-};
-
-enum custom_keycodes {
-  ALPHA = SAFE_RANGE,
+  EXT_PLV,
+  ALPHA,
   BETA,
   DELTA
 };
@@ -184,29 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-/*
- if (record->event.pressed) {
-        switch(keycode) {
-            case ALPHA:
-                SEND_STRING(SS_LCTRL("v")"u03b1");
-                return false;
-            case BETA:
-                SEND_STRING(SS_LCTRL("v")"u03b3");
-                return false;
-            case DELTA:
-                SEND_STRING(SS_LCTRL("v")"u03c3");
-                return false;
-        }
-    }
-*/
   switch (keycode) {
-/*    case ALPHA:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("v")"u03b1");
-      }
-      return false;
-      break;
-*/
     case QWERTY:
       if (record->event.pressed) {
         print("mode just switched to qwerty and this is a huge string\n");
@@ -284,6 +259,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_SONG(plover_gb_song);
         #endif
         layer_off(_PLOVER);
+      }
+      return false;
+      break;
+    case ALPHA:
+      if (record->event.pressed) {
+	      SEND_STRING( SS_LCTRL( "v" )"u03b1" );
+      }
+      return false;
+      break;
+    case BETA:
+      if (record->event.pressed) {
+	      SEND_STRING( SS_LCTRL( "v" )"u03b3" );
+      }
+      return false;
+      break;
+    case DELTA:
+      if (record->event.pressed) {
+	      SEND_STRING( SS_LCTRL( "v" )"u03c3" );
       }
       return false;
       break;
