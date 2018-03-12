@@ -16,6 +16,7 @@
 
 #include "planck.h"
 #include "action_layer.h"
+#include <sendstring_colemak.h>
 
 extern keymap_config_t keymap_config;
 
@@ -38,6 +39,12 @@ enum planck_keycodes {
   RAISE,
   BACKLIT,
   EXT_PLV
+};
+
+enum custom_keycodes {
+    ALPHA = SAFE_RANGE,
+    BETA,
+    DELTA
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -108,10 +115,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {KC_TILD, UC(1|0x03B1), KC_1,   KC_2, KC_3,    _______, _______, _______, _______, _______, _______,  KC_BSPC},
-  {_______, UC(1|0x03B2), KC_4,   KC_5, KC_6,    _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR,  KC_PIPE},
-  {_______, UC(1|0x03C3), KC_7,   KC_8, KC_9,    _______, _______, _______, _______, KC_UP,   _______,  _______},
-  {_______, _______,    _______, KC_0, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______}
+  {KC_TILD, ALPHA,   KC_1,    KC_2, KC_3,    _______, _______, _______, _______, _______, _______,  KC_BSPC},
+  {_______, BETA,    KC_4,    KC_5, KC_6,    _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR,  KC_PIPE},
+  {_______, DELTA,   KC_7,    KC_8, KC_9,    _______, _______, _______, _______, KC_UP,   _______,  _______},
+  {_______, _______, _______, KC_0, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______}
 },
 
 /* Raise
@@ -177,6 +184,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed) {
+        switch(keycode) {
+            case ALPHA:
+                SEND_STRING(SS_LCTRL("v")"u03b1");
+                return false;
+            case BETA:
+                SEND_STRING(SS_LCTRL("v")"u03b3");
+                return false;
+            case DELTA:
+                SEND_STRING(SS_LCTRL("v")"u03c3");
+                return false;
+        }
+    }
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
