@@ -23,7 +23,7 @@ extern keymap_config_t keymap_config;
 enum planck_layers {
   _QWERTY,
   _COLEMAK,
-  _DVORAK,
+  _WORKMAN,
   _LOWER,
   _RAISE,
   _PLOVER,
@@ -33,7 +33,7 @@ enum planck_layers {
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
-  DVORAK,
+  WORKMAN,
   PLOVER,
   LOWER,
   RAISE,
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Ctrl |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * | Ctrl |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -82,39 +82,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_ESCAPE, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_RALT, KC_PSCR, KC_RCTL, KC_ENT}
 },
 
-/* Dvorak
+/* Workman
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   "  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
+ * | Tab  |   Q  |   D  |   R  |   W  |   B  |   J  |   F  |   U  |   P  |   :  | Del  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
+ * | Esc  |   A  |   S  |   H  |   T  |   G  |   Y  |   N  |   E  |   O  |   I  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
+ * | Shift|   Z  |   X  |   M  |   C  |   V  |   K  |   L  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_DVORAK] = {
-  {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC},
-  {KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH},
-  {KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT },
-  {BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT}
+[_WORKMAN] = {
+  {KC_TAB,    KC_Q,    KC_D,    KC_R,    KC_W,  KC_B,   KC_J,   KC_F,  KC_U,    KC_P,    KC_SCLN, KC_DEL},
+  {KC_LCTL,   KC_A,    KC_S,    KC_H,    KC_T,  KC_G,   KC_Y,   KC_N,  KC_E,    KC_O,    KC_I,    KC_QUOT},
+  {KC_LSFT,   KC_Z,    KC_X,    KC_M,    KC_C,  KC_V,   KC_K,   KC_L,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT},
+  {KC_ESCAPE, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_RALT, KC_PSCR, KC_RCTL, KC_ENT}
 },
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   α  |   1  |   2  |   3  |      |      |      |      |      |      | Bksp |
+ * |   ~  |   α  |   1  |   2  |   3  |   (  |   )  |      |      |      |      | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   β  |   4  |   5  |   6  |      |      |   _  |   +  |   {  |   }  |  |   |
+ * |      |   β  |   4  |   5  |   6  |   [  |   ]  |   _  |   +  |   {  |   }  |  |   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   σ  |   7  |   8  |   9  |      |      |      |      |  Up  |      |      |
+ * |      |   σ  |   7  |   8  |   9  |   {  |   }  |      |      |  Up  |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |   0  |      |             |      | Left | Down |Right |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {KC_TILD, ALPHA,   KC_1,    KC_2, KC_3,    _______, _______, _______, _______, _______, _______,  KC_BSPC},
-  {_______, BETA,    KC_4,    KC_5, KC_6,    _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR,  KC_PIPE},
-  {_______, DELTA,   KC_7,    KC_8, KC_9,    _______, _______, _______, _______, KC_UP,   _______,  _______},
+  {KC_TILD, ALPHA,   KC_1,    KC_2, KC_3,    KC_LPRN, KC_RPRN, _______, _______, _______, _______,  KC_BSPC},
+  {_______, BETA,    KC_4,    KC_5, KC_6,    KC_LBRC, KC_RBRC, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR,  KC_PIPE},
+  {_______, DELTA,   KC_7,    KC_8, KC_9,    KC_LCBR, KC_RCBR, _______, _______, KC_UP,   _______,  _______},
   {_______, _______, _______, KC_0, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______}
 },
 
@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|Plover|      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Workman|Plover|      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = {
   {_______, RESET,   DEBUG,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI,   RGB_VAD, KC_DEL },
-  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  DVORAK,   PLOVER,  _______},
+  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  WORKMAN,   PLOVER,  _______},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______,   _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_SYSREQ, _______, _______}
 }
@@ -195,9 +195,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case DVORAK:
+    case WORKMAN:
       if (record->event.pressed) {
-        set_single_persistent_default_layer(_DVORAK);
+        set_single_persistent_default_layer(_WORKMAN);
       }
       return false;
       break;
