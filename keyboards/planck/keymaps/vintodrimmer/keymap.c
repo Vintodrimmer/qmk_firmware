@@ -130,8 +130,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
-  {KC_GRV,  KC_EXLM, KC_1,    KC_2, KC_3,    _______, _______, KC_DLR_, KC_AMPR, _______, _______, KC_BSPC},
-  {_______, KC_AT,   KC_4,    KC_5, KC_6,    _______, _______, KC_PERC, KC_ASTR  KC_MINS, KC_EQL,  KC_BSLS},
+  {KC_GRV,  KC_EXLM, KC_1,    KC_2, KC_3,    _______, _______, KC_DLR,  KC_AMPR, _______, _______, KC_BSPC},
+  {_______, KC_AT,   KC_4,    KC_5, KC_6,    _______, _______, KC_PERC, KC_ASTR, KC_MINS, KC_EQL,  KC_BSLS},
   {_______, KC_HASH, KC_7,    KC_8, KC_9,    _______, _______, KC_CIRC, _______, KC_PGUP, _______, _______},
   {_______, _______, _______, KC_0, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_END,  _______}
 },
